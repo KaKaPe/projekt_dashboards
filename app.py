@@ -15,14 +15,14 @@ import tab3
 class db:
     def __init__(self):
         self.transactions = db.transaction_init()
-        self.cc = pd.read_csv(r'db\country_codes.csv', index_col=0)
-        self.customers = pd.read_csv(r'db\customers.csv', index_col=0)
-        self.prod_info = pd.read_csv(r'db\prod_cat_info.csv')
+        self.cc = pd.read_csv(os.path.join('db', 'country_codes.csv'), index_col=0)
+        self.customers = pd.read_csv(os.path.join('db', 'customers.csv'), index_col=0)
+        self.prod_info = pd.read_csv(os.path.join('db', 'prod_cat_info.csv'))
 
     @staticmethod
     def transaction_init():
         transactions = pd.DataFrame()
-        src = r'db\transactions'
+        src = os.path.join('db', 'transactions')
         for filename in os.listdir(src):
             transactions = transactions.append(pd.read_csv(os.path.join(src, filename), index_col=0))
 
